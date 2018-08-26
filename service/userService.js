@@ -14,5 +14,14 @@ let getUserInfo = function (userid, callback){
     });
 }
 
+let insertUser = function(postData, callback){
+    postValue = [postData.name]
+    connection.query("INSERT INTO users (name) VALUES (?)",[postValue], function(err, rows, fields) {
+        if (err) return callback(err);
+        return callback(rows);
+    });
+}
+
 module.exports.getUsers = getUsers;
 module.exports.getUserInfo = getUserInfo;
+module.exports.insertUser = insertUser;

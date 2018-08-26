@@ -20,3 +20,14 @@ module.exports.getUsers = (req,res) => {
         }
     });
 }
+
+module.exports.insertUser = (req,res) => {
+    const postData = req.body;
+    userService.insertUser(postData, function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+}

@@ -5,7 +5,7 @@ let bodyparser = require('body-parser');
 //routes
 let userroute = require('./routes/user');
 
-app.use(bodyparser.json());
+app.use(bodyparser.urlencoded({ extended: false }))
 
 app.use('/user',userroute);
 
