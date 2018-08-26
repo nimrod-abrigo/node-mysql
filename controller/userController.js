@@ -31,3 +31,25 @@ module.exports.insertUser = (req,res) => {
         }
     });
 }
+
+module.exports.updateUser = (req,res) => {
+    const putData = req.body;
+    userService.updateUser(putData, function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+}
+
+module.exports.deleteUser = (req,res) => {
+    const deleteData = req.params.id;
+    userService.deleteUser(deleteData,function(err,result){
+        if(err){
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    });
+}
