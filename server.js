@@ -3,7 +3,7 @@ let app = express();
 let bodyparser = require('body-parser');
 
 //routes
-let userroute = require('./routes/user');
+let userroute = require('./routes/userRoute');
 
 app.use(bodyparser.urlencoded({ extended: false }))
 
