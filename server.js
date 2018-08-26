@@ -9,4 +9,4 @@ app.use(bodyparser.urlencoded({ extended: false }))
 
 app.use('/user',userroute);
 
-app.listen(4000,()=>console.log('gumana ang node server'));
+app.listen(4000,()=>console.log('node server is working'));
