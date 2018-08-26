@@ -15,8 +15,8 @@ let getUserInfo = function (userid, callback){
 }
 
 let insertUser = function(postData, callback){
-    postValue = [postData.name]
-    connection.query("INSERT INTO users (name) VALUES (?)",[postValue], function(err, rows, fields) {
+    postValue = [postData.name,postData.email]
+    connection.query("INSERT INTO users (name,email) VALUES (?)",[postValue], function(err, rows, fields) {
         if (err) return callback(err);
         return callback(rows);
     });
