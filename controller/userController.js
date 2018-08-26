@@ -1,55 +1,30 @@
 let userService = require('../service/userService')
 
-module.exports.getUserInfo = (req,res) => {
+module.exports.getUserInfo = async (req,res) => {
     let userid = req.params.id;
-    userService.getUserInfo(userid,function(err,result){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(result);
-        }
-    });
+    let userInfo = await userService.getUserInfo(userid);
+    res.send(userInfo);
+};
+
+module.exports.getUsers = async (req,res) => {
+    let users= await userService.getUsers();
+    res.send(users);
 }
 
-module.exports.getUsers = (req,res) => {
-    userService.getUsers(function(err,result){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(result);
-        }
-    });
-}
-
-module.exports.insertUser = (req,res) => {
+module.exports.insertUser = async (req,res) => {
     const postData = req.body;
-    userService.insertUser(postData, function(err,result){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(result);
-        }
-    });
+    let insertResult = await userService.insertUser(postData);
+    res.send(insertResult);
 }
 
-module.exports.updateUser = (req,res) => {
+module.exports.updateUser = async (req,res) => {
     const putData = req.body;
-    userService.updateUser(putData, function(err,result){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(result);
-        }
-    });
+    let updateResult = await userService.updateUser(putData);
+    res.send(updateResult);
 }
 
-module.exports.deleteUser = (req,res) => {
+module.exports.deleteUser = async (req,res) => {
     const deleteData = req.params.id;
-    userService.deleteUser(deleteData,function(err,result){
-        if(err){
-            res.send(err);
-        }else{
-            res.send(result);
-        }
-    });
+    let deleteResult = await userService.deleteUser(deleteData);
+    res.send(deleteResult);
 }
