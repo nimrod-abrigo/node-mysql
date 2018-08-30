@@ -18,9 +18,8 @@ module.exports.insertUser = async (req,res) => {
 }
 
 module.exports.updateUser = async (req,res) => {
-    const id = req.params.id;
     const putData = req.body;
-    let updateResult = await userService.updateUser(id,putData);
+    let updateResult = await userService.updateUser(putData);
     res.send(updateResult);
 }
 
