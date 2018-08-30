@@ -28,13 +28,14 @@ let insertUser = function(postData){
     });
 }
 
-let updateUser = function(id,putData){
+let updateUser = function(putData){
     let setData = {
         name: putData.name,
         email: putData.email
     };
+    let id = putData.id;
     return new Promise(function(resolve,reject){
-        connection.query("UPDATE users SET ? WHERE id = ?",[setData,id],function(err,rows,fields){
+        connection.query("UPDATE users SET ? WHERE id = ?",[setData,putData.id],function(err,rows,fields){
             if(err) return reject(err);
             return resolve(rows);
         });
